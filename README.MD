@@ -217,17 +217,18 @@ docker-compose up -d
 
 1. **Check container logs**:
 
-   ```bash
+```bash
 docker logs -f telemetry-gateway
-````
+```
+
    - Look for messages indicating receivers are listening and exporters are initialized.
 
 2. **Test Receivers**:
    - **Prometheus**:
 
- ```bash
+```bash
 curl -sSf http://localhost:9090/metrics
-````
+```
 
 ```
  Should return collector metrics.
@@ -237,13 +238,13 @@ curl -sSf http://localhost:9090/metrics
 
 ```
 curl -sSf [http://localhost:9411/health](http://localhost:9411/health)
-````
+```
      Should return a `200 OK` (Zipkin HTTP endpoint).
 
    - **OTLP/gRPC** (requires grpcurl or OpenTelemetry client):
 ```
 grpcurl -plaintext localhost:4317 list
-````
+```
 
 ```
  Should list available gRPC services.
@@ -304,12 +305,9 @@ Within a secure compartment, all other hosts should point to this collector’s 
 
   * Run:
 
-    ```bash
-    ```
-
+```bash
 otelcontribcol --config=otel-collector-config.yaml --dry-run
-
-````
+```
     to validate YAML syntax and schema before starting.
 
 - **Connection Refused / Timeout**:
@@ -318,7 +316,7 @@ otelcontribcol --config=otel-collector-config.yaml --dry-run
 nc -vz <LOKI_HOST> 3100
 nc -vz <MIMIR_HOST> 9009
 nc -vz <TEMPO_HOST> 4317
-````
+```
 
 * Check firewall or security group rules.
 
