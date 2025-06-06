@@ -308,10 +308,11 @@ Within a secure compartment, all other hosts should point to this collector’s 
 ```bash
 otelcontribcol --config=otel-collector-config.yaml --dry-run
 ```
-    to validate YAML syntax and schema before starting.
+- validate YAML syntax and schema before starting.
 
 - **Connection Refused / Timeout**:
-  - Verify the central LGTM endpoints are reachable:
+Verify the central LGTM endpoints are reachable:
+
 ```bash
 nc -vz <LOKI_HOST> 3100
 nc -vz <MIMIR_HOST> 9009
