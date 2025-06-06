@@ -18,4 +18,4 @@ services:
       # Loki push endpoint (if you added a Loki exporter to the config)
       - "3100:3100"
     volumes:
-      - ./otel-collector-config.yml:/etc/otel-collector-config.yaml:ro
+      - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml:ro

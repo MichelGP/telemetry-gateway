@@ -11,38 +11,40 @@ receivers:
 
   otlp:
     protocols:
-      grpc:
-      http
+      grpc: {}   # enable OTLP/gRPC on 4317
+      http: {}   # enable OTLP/HTTP on 4318
 
   jaeger:
     protocols:
-      grpc:
-      thrift_http
+      grpc: {}         # Jaeger gRPC on 14250
+      thrift_http: {}  # Jaeger HTTP (Thrift) on 14268
 
   zipkin:
-    protocols:
-      http
+    # Zipkin only needs a single endpoint; remove "protocols:" entirely
+    endpoint: "0.0.0.0:9411"
 
 processors:
   batch: {}
 
 exporters:
   prometheusremotewrite:
-    endpoint: "http://<MIMIR_HOST>:9009/api/v1/push"
-    insecure: true
+    endpoint: "http://10.0.113.11:9009/api/v1/push"
+    tls:
+      insecure: true
 
   otlp/tempo:
-    endpoint: "<TEMPO_HOST>:4317"
+    endpoint: "10.0.113.11:4317"
     tls:
       insecure: true
 
   loki:
-    endpoint: "http://<LOKI_HOST>:3100/loki/api/v1/push"
-    # If Loki requires auth:
+    endpoint: "http://10.0.113.11:3100/loki/api/v1/push"
+    # If Loki needs authentication, uncomment and fill in:
     # basic_auth:
     #   username: "loki-user"
     #   password: "loki-pass"
-    # Or: bearertoken: "/etc/loki-token.txt"
+    # OR:
+    # bearertoken: "/etc/loki-token.txt"
 
 service:
   pipelines:
