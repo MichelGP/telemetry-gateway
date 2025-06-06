@@ -308,7 +308,8 @@ Within a secure compartment, all other hosts should point to this collector’s 
 ```bash
 otelcontribcol --config=otel-collector-config.yaml --dry-run
 ```
-- validate YAML syntax and schema before starting.
+
+* validate YAML syntax and schema before starting.
 
 - **Connection Refused / Timeout**:
 Verify the central LGTM endpoints are reachable:
