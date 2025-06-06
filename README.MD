@@ -237,16 +237,13 @@ curl -sSf http://localhost:9090/metrics
 
 * **Zipkin**:
 
-  ```bash
   ```
-
 curl -sSf [http://localhost:9411/health](http://localhost:9411/health)
-
 ````
      Should return a `200 OK` (Zipkin HTTP endpoint).
 
    - **OTLP/gRPC** (requires grpcurl or OpenTelemetry client):
-     ```bash
+```
 grpcurl -plaintext localhost:4317 list
 ````
 
