@@ -218,16 +218,14 @@ docker-compose up -d
 1. **Check container logs**:
 
    ```bash
-   ```
-
 docker logs -f telemetry-gateway
-
 ````
    - Look for messages indicating receivers are listening and exporters are initialized.
 
 2. **Test Receivers**:
    - **Prometheus**:
-     ```bash
+
+ ```bash
 curl -sSf http://localhost:9090/metrics
 ````
 
@@ -237,7 +235,7 @@ curl -sSf http://localhost:9090/metrics
 
 * **Zipkin**:
 
-  ```
+```
 curl -sSf [http://localhost:9411/health](http://localhost:9411/health)
 ````
      Should return a `200 OK` (Zipkin HTTP endpoint).
