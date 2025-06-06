@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  telemetry-gateway:
+    image: otel/opentelemetry-collector-contrib:latest
+    container_name: telemetry-gateway
+    restart: unless-stopped
+    command: ["--config=/etc/otel-collector-config.yaml"]
+    ports:
+      # Prometheus scrape receiver (exposes /metrics)
+      - "9090:9090"
+      # OTLP gRPC receiver
+      - "4317:4317"
+      # Zipkin HTTP receiver
+      - "9411:9411"
+      # Jaeger gRPC receiver
+      - "14250:14250"
+      # Loki push endpoint (if you added a Loki exporter to the config)
+      - "3100:3100"
+    volumes:
+      - ./otel-collector-config.yml:/etc/otel-collector-config.yaml:ro
