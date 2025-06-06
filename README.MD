@@ -312,7 +312,7 @@ otelcontribcol --config=otel-collector-config.yaml --dry-run
 
 - **Connection Refused / Timeout**:
   - Verify the central LGTM endpoints are reachable:
-    ```bash
+```bash
 nc -vz <LOKI_HOST> 3100
 nc -vz <MIMIR_HOST> 9009
 nc -vz <TEMPO_HOST> 4317
@@ -324,18 +324,17 @@ nc -vz <TEMPO_HOST> 4317
 
   * Ensure data is flowing into Loki/Mimir/Tempo by querying their health or metrics endpoints:
 
-    ```bash
-    ```
-
+```bash
 curl -sSf http\://\<LOKI\_HOST>:3100/ready
 curl -sSf http\://\<MIMIR\_HOST>:9009/metrics
 curl -sSf http\://\<TEMPO\_HOST>:4317/health
+```
 
-````
   - Inspect collector logs:
-    ```bash
+
+```bash
 docker logs telemetry-gateway --tail=50
-````
+```
 
 ## License
 
